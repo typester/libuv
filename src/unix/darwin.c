@@ -42,7 +42,7 @@
 /* see: http://developer.apple.com/library/mac/#qa/qa1398/_index.html */
 uint64_t uv_hrtime() {
     uint64_t time;
-    uint64_t erano;
+    uint64_t enano;
     static mach_timebase_info_data_t sTimebaseInfo;
 
     time = mach_absolute_time();
@@ -51,9 +51,9 @@ uint64_t uv_hrtime() {
         (void)mach_timebase_info(&sTimebaseInfo);
     }
 
-    erano = time * sTimebaseInfo.numer / sTimebaseInfo.denom;
+    enano = time * sTimebaseInfo.numer / sTimebaseInfo.denom;
 
-    return erano;
+    return enano;
 }
 #else
 uint64_t uv_hrtime() {
